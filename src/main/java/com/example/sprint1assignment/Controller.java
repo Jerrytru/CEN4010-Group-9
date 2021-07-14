@@ -1,17 +1,15 @@
 package com.example.sprint1assignment;
 
+import com.example.sprint1assignment.models.Book;
+import com.example.sprint1assignment.models.Wishlist;
 import com.example.sprint1assignment.repositories.BookRepository;
 import com.example.sprint1assignment.repositories.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @RestController

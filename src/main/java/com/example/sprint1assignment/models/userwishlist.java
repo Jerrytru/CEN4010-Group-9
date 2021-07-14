@@ -1,4 +1,4 @@
-package com.example.sprint1assignment;
+package com.example.sprint1assignment.models;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

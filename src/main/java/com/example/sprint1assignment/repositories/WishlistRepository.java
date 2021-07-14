@@ -1,7 +1,7 @@
 package com.example.sprint1assignment.repositories;
 
-import com.example.sprint1assignment.Book;
-import com.example.sprint1assignment.Wishlist;
+import com.example.sprint1assignment.models.Book;
+import com.example.sprint1assignment.models.Wishlist;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

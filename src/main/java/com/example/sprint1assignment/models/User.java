@@ -1,9 +1,8 @@
-package com.example.sprint1assignment;
+package com.example.sprint1assignment.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
