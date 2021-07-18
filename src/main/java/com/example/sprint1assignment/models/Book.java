@@ -8,8 +8,11 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
+    private String description;
     private String author;
     private String date;
+    private String genre;
+    private int copiesSold;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "wishlists_name")
     private Wishlist wishlist;
@@ -20,10 +23,36 @@ public class Book {
     public Book(String name) {
         this.name = name;
     }
-    public Book(String name, String author, String date) {
+    public Book(String name, String author, String date, String genre, int copiesSold) {
         this.name = name;
         this.author = author;
         this.date = date;
+        this.genre = genre;
+        this.copiesSold = copiesSold;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getCopiesSold() {
+        return copiesSold;
+    }
+
+    public void setCopiesSold(int copiesSold) {
+        this.copiesSold = copiesSold;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public String getName() {
