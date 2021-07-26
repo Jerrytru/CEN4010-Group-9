@@ -18,12 +18,12 @@ public class Wishlist implements Serializable {
     @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "wishlist", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "wishlist", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Book> books = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "users_id")
-    private User user;
+    /*@ManyToOne
+    @JoinColumn(name = "user")
+    private User user;*/
 
     public Wishlist() { }
 
@@ -60,4 +60,7 @@ public class Wishlist implements Serializable {
         return books;
     }
 
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
 }

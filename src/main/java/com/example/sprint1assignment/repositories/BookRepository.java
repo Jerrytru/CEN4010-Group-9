@@ -9,8 +9,9 @@ import java.util.List;
 
 @Transactional
 public interface BookRepository extends CrudRepository<Book,Long> {
-    //List<Book> findAllByWishListName(String wish_list_name);
     List<Book> findAllByWishlist(Wishlist wishlist);
     Long deleteByName(String name);
+    Book findByName(String name);
+
 
 }
