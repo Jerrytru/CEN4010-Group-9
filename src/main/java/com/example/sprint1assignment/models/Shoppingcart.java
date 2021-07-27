@@ -15,7 +15,7 @@ public class Shoppingcart {
    /* @OneToOne
     User user;*/
 
-    @OneToMany(mappedBy = "shoppingcart", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "shoppingcart", cascade = CascadeType.REMOVE)
     private Set<Book> books = new HashSet<>();
 
 

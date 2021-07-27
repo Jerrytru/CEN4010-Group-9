@@ -6,12 +6,14 @@ import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 public interface BookRepository extends CrudRepository<Book,Long> {
     List<Book> findAllByWishlist(Wishlist wishlist);
     Long deleteByName(String name);
-    Book findByName(String name);
+    Optional<Book> findByName(String name);
+
 
 
 }

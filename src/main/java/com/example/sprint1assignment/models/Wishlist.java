@@ -2,11 +2,15 @@ package com.example.sprint1assignment.models;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -17,9 +21,9 @@ public class Wishlist implements Serializable {
 
     @Column(unique = true)
     private String name;
-
-    @OneToMany(mappedBy = "wishlist", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private Set<Book> books = new HashSet<>();
+    @OneToMany(mappedBy = "wishlist",cascade = CascadeType.REMOVE)
+    @NotFound(action = NotFoundAction.IGNORE)
+    private List<Book> books = new ArrayList<>();
 
     /*@ManyToOne
     @JoinColumn(name = "user")
@@ -56,11 +60,9 @@ public class Wishlist implements Serializable {
         return Objects.hash(id, name, books);
     }
 
-    public Set<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
+
 }

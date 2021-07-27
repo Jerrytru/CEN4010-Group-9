@@ -1,8 +1,6 @@
 package com.example.sprint1assignment.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +8,9 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(unique = true)
     private String ISBN;
+    @Column(unique = true)
     private String name;
     private String description;
     private String author;
@@ -19,11 +19,11 @@ public class Book {
     private String genre;
     private int price;
     private int copiesSold;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "wishlists_name")
     @JsonIgnore
-    private Wishlist wishlist;
-    @ManyToOne(cascade = CascadeType.ALL)
+    private Wishlist wishlist = new Wishlist();
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "shoppingcarts_name")
     @JsonIgnore
     private Shoppingcart shoppingcart;
@@ -129,4 +129,7 @@ public class Book {
     public Wishlist getWishlist() {
         return wishlist;
     }
+
+
+
 }

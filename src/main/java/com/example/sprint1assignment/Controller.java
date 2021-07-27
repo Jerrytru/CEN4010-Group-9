@@ -9,8 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.persistence.EntityManager;
 import java.net.URI;
 import java.util.Optional;
+import java.util.Set;
 
 
 @RestController
@@ -20,7 +22,6 @@ public class Controller {
     private WishlistRepository wishlistRepository;
     @Autowired
     private BookRepository bookRepository;
-
 
 
     public Controller(WishlistRepository wishlistRepository, BookRepository bookRepository) {
@@ -53,7 +54,7 @@ public class Controller {
         if (!wishlist.isPresent()) {
             return ResponseEntity.unprocessableEntity().build();
         }
-        //wishlist.get().getBooks().add(newBook);
+        wishlist.get().getBooks().add(newBook);
         newBook.setWishlist(wishlist.get());
         bookRepository.save(newBook);
         if (newBook == null) {
@@ -69,15 +70,18 @@ public class Controller {
     public ResponseEntity<Wishlist> removeBookFromWishlist(@PathVariable String wishlistname, @PathVariable String name) {
 
         Optional<Wishlist> optionalWishlist = wishlistRepository.findByName(wishlistname);
+        Optional<Book> optionalBook = bookRepository.findByName(name);
+
+
 
         if (!optionalWishlist.isPresent()) {
             return ResponseEntity.unprocessableEntity().build();
         }
 
-        Book bookToRemove = bookRepository.findByName(name);
-        optionalWishlist.get().getBooks().remove(bookToRemove);
-        bookRepository.delete(bookToRemove);
+        //Book bookToRemove = bookRepository.findByName(name);
+        optionalWishlist.get().getBooks().remove(optionalBook.get());
         wishlistRepository.save(optionalWishlist.get());
+        bookRepository.delete(optionalBook.get());
 
 
 
