@@ -1,15 +1,20 @@
 package com.example.userProfiles.userProfile;
 
+import com.example.userProfiles.CreditCard.CreditCard;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity   //For Hibernate
 @Table    //For table in database
 public class Profile {
+
   @Id
   @SequenceGenerator(
       name = "profile_sequence",
@@ -27,6 +32,7 @@ public class Profile {
   private String altEmail;
   private String homeAddress;
 
+
   //CONSTRUCTORS
   public Profile() {
   }
@@ -43,6 +49,7 @@ public class Profile {
     this.userName = userName;
     this.password = password;
   }
+
   public Profile(String userName, String password, String fullName, String altEmail) {
     this.userName = userName;
     this.password = password;
@@ -59,6 +66,13 @@ public class Profile {
     this.homeAddress = homeAddress;
   }
 
+
+  @OneToMany(
+      fetch = FetchType.LAZY,
+      mappedBy = "profile"
+  )
+  private List<CreditCard> cards;
+
   @Override
   public String toString() {
     return "Profile{" +
@@ -70,11 +84,10 @@ public class Profile {
         '}';
   }
 
-
   //GETTERS
-  public Long getId() {
+  /*public Long getId() {
     return id;
-  }
+  }*/
 
   public String getUserName() {
     return userName;
@@ -82,6 +95,18 @@ public class Profile {
 
   public String getPassword() {
     return password;
+  }
+
+  public String getFullName() {
+    return fullName;
+  }
+
+  public String getAltEmail() {
+    return altEmail;
+  }
+
+  public String getHomeAddress() {
+    return homeAddress;
   }
 
 
@@ -96,5 +121,17 @@ public class Profile {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
+  }
+
+  public void setAltEmail(String altEmail) {
+    this.altEmail = altEmail;
+  }
+
+  public void setHomeAddress(String homeAddress) {
+    this.homeAddress = homeAddress;
   }
 }

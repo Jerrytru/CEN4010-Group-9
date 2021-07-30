@@ -9,20 +9,22 @@ import org.springframework.context.annotation.Configuration;
 public class ProfileConfig {
 
   @Bean
-  CommandLineRunner commandLineRunner(ProfileRepository profileRepository){
+  CommandLineRunner commandLineRunner(ProfileRepository profileRepository) {
     return args -> {
       Profile user1 = new Profile(
-          "ruria006@fiu.edu",
+          "test1",
           "Password1",
           "Richard Uriarte",
-          "optionalEmail@email.com"
+          "optionalEmail@email.com",
+          "11111 SW 11ST 111111"
       );
 
       Profile user2 = new Profile(
-          "test@fiu.edu",
-          "test1",
-          "test test",
-          "optionalEmail@email.com"
+          "test2",
+          "test2",
+          "test2 test2",
+          "optionalEmail2@email.com",
+          "2222 SW 22ST 222222"
       );
 
       //Hard coded user profiles
