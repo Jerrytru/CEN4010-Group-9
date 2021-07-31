@@ -1,4 +1,4 @@
-package com.example.sprint1assignment;
+package com.example.sprint1assignment.controllers;
 
 import com.example.sprint1assignment.models.Book;
 import com.example.sprint1assignment.models.Wishlist;
@@ -78,7 +78,9 @@ public class Controller {
             return ResponseEntity.unprocessableEntity().build();
         }
 
-        //Book bookToRemove = bookRepository.findByName(name);
+        if (!optionalBook.isPresent()) {
+            return ResponseEntity.unprocessableEntity().build();
+        }
         optionalWishlist.get().getBooks().remove(optionalBook.get());
         wishlistRepository.save(optionalWishlist.get());
         bookRepository.delete(optionalBook.get());

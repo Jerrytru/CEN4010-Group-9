@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface WishlistRepository extends CrudRepository<Wishlist, Long> {
     Optional<Wishlist> findByName(String name);
     List<Wishlist> findAllByName(String name);
+    
 
 }
 

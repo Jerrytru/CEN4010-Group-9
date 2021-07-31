@@ -20,7 +20,7 @@ public class User implements Serializable {
     @Basic(optional = true)
     private String homeAddress;
     /*@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Wishlist> wishlist;*/
+    private List<Wishlist> wishlist;*/
     @OneToOne
     Shoppingcart shoppingcart;
 

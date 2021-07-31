@@ -2,6 +2,7 @@ package com.example.sprint1assignment.repositories;
 
 import com.example.sprint1assignment.models.Book;
 import com.example.sprint1assignment.models.Wishlist;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
@@ -13,6 +14,8 @@ public interface BookRepository extends CrudRepository<Book,Long> {
     List<Book> findAllByWishlist(Wishlist wishlist);
     Long deleteByName(String name);
     Optional<Book> findByName(String name);
+
+
 
 
 
