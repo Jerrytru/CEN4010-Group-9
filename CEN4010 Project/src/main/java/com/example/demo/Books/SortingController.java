@@ -20,12 +20,6 @@ public class SortingController {
     this.sortingService = sortingService;
   }
 
-//  @GetMapping("/books")
-//  public List<Books> getBooks() {
-//    return booksService.getBooks();
-//  }
-
-
   @GetMapping("/genre/{genre}")
   public List<Sorting> getGenre(@PathVariable String genre) {
     return sortingService.getBookByGenre(genre);
@@ -41,10 +35,10 @@ public class SortingController {
     return sortingService.getBookByRating(rating);
   }
 
-//  @GetMapping("random/{X}")
-//  public List<Books> getXBooks(@PathVariable int X){
-//    return booksService.getXBooks(X);
-//  }
+  @GetMapping("/index/{index}")
+  public List<Sorting> getBooks(@PathVariable int index){
+    return sortingService.getBookByX(index);
+  }
 
   @PostMapping
   public void registerNewBook(@RequestBody Sorting sorting){
