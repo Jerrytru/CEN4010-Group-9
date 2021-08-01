@@ -49,9 +49,9 @@ public class ProfileController {
     profileService.addNewProfile(profile);
   }
 
-  @PutMapping(path = "{id}")
+  @PutMapping(path = "/{userName}")
   public void updateProfile(
-      @PathVariable("id") Long id,
+      @PathVariable String userName,
       //@RequestParam(required = false) String userName,
       @RequestParam(required = false) String password,
       @RequestParam(required = false) String fullName,
@@ -59,6 +59,6 @@ public class ProfileController {
       @RequestParam(required = false) String homeAddress) {
     //userName not needed since it can't be changed.
 //    profileService.updateProfile(id, userName, password, fullName, altEmail, homeAddress);
-    profileService.updateProfile(id, password, fullName, altEmail, homeAddress);
+    profileService.updateProfile(userName, password, fullName, altEmail, homeAddress);
   }
 }

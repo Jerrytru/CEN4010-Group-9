@@ -22,7 +22,6 @@ public class CreditCardConfig {
           "4916471220673253",
           "8/2025",
           156
-          //profileRepository.findProfileByUserName("test1")  //The profile/user I am trying to attach this credit card to
       );
 
       CreditCard card2 = new CreditCard(

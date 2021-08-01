@@ -12,10 +12,10 @@ public class ProfileConfig {
   CommandLineRunner commandLineRunner(ProfileRepository profileRepository) {
     return args -> {
       Profile user1 = new Profile(
-          "test1",
+          "ruria006@fiu.edu",
           "Password1",
           "Richard Uriarte",
-          "optionalEmail@email.com",
+          "ruriarte1998@gmail.com",
           "11111 SW 11ST 111111"
       );
 

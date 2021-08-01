@@ -39,7 +39,7 @@ public class CreditCard {
   )
   @JoinColumn(
       name = "profile_id",
-      referencedColumnName = "id"
+      referencedColumnName = "profileId"
   )
   private Profile profile;
 
@@ -87,7 +87,7 @@ public class CreditCard {
 
 
   //GETTERS
-  public Long getId() {
+  public Long getCardId() {
     return cardId;
   }
 
@@ -111,6 +111,8 @@ public class CreditCard {
     return profile;
   }
 
+
+
   //SETTERS
   public void setId(Long cardId) {
     this.cardId = cardId;
@@ -132,7 +134,8 @@ public class CreditCard {
     this.CVV = CVV;
   }
 
-  /*public void setProfile(Profile profile) {
+  public void assignProfile(Profile profile){
     this.profile = profile;
-  }*/
+  }
+
 }
