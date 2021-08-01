@@ -22,6 +22,7 @@ public class ProfileService {
   //This will return the list of Profiles in the database
   public List<Profile> getProfiles() {
     return profileRepository.findAll();
+
   }
 
 
@@ -51,13 +52,10 @@ public class ProfileService {
 
 
   @Transactional
-  public void updateProfile(Long profileId, String password,
+  public void updateProfile(String userName, String password,
       String fullName, String altEmail, String homeAddress) {
 
-    Profile profile = profileRepository.findById(profileId)
-        .orElseThrow(() -> new IllegalStateException(
-            "Profile with ID " + profileId + " does not exist. <- make it by username not id")
-        );
+    Profile profile = profileRepository.findProfileByUserName(userName);
 
 
     //Username not included since its not supposed to be changed
